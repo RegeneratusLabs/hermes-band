@@ -1,0 +1,41 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  unit:
+    name: unit (py${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: pip install -e ".[dev]"
+      - run: python -m pytest --ignore=tests/test_render.py
+
+  audio:
+    name: full render
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: install audio deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends fluidsynth fluid-soundfont-gm ffmpeg
+      - run: pip install -e ".[dev]"
+      - run: hermes-band doctor
+      - name: render a two-bar arrangement
+        run: python -m pytest tests/test_render.py -v
+      - name: render the bundled presets
+        run: hermes-band demo -t bed -o /tmp/out

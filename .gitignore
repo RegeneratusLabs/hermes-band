@@ -1,0 +1,29 @@
+# rendered audio and stems
+out/
+*.wav
+*.mp3
+*.flac
+*.m4a
+
+# midi scratch
+*.mid
+
+# video project is a separate thing, not part of this package
+video/
+frames/
+*.mp4
+*.png
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# editors / os
+.DS_Store
+.idea/
+.vscode/
