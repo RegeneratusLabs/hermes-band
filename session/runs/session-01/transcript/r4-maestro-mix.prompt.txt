@@ -1,0 +1,42 @@
+You are the bandleader. The tune is mixed and it is wrong.
+
+You measured the render. Here is what came back:
+
+```
+  lr_balance_db        -0.07
+  stereo_corr          0.743
+  bands                {'sub': np.float64(6.6), 'bass': np.float64(49.7), 'mid': np.float64(34.8), 'presence': np.float64(8.7), 'air': np.float64(0.3), 'centroid_hz': 714}
+  lufs                 -13.9
+  lra                  2.2
+  true_peak_db         -0.9
+```
+
+Healthy targets for a -14 LUFS master:
+  60-250 Hz   25-35%   (current value above is the problem)
+  250-2000 Hz 35-50%
+  2-8 kHz     6% or more
+  L/R balance within 1 dB
+  stereo correlation 0.4-0.9
+  spectral centroid 700-1100 Hz
+
+Here is every part in the arrangement, with the mix its player chose:
+
+### sticks
+- drums/drums  extra.mix={'level': 1.0, 'hp': 42, 'mud': -2.5}
+### lowend
+- fingerbass/slap_bass  extra.mix={'level': -4.0, 'hp': 42, 'mud': -2.0, 'low': 0.5, 'pan': 0.0, 'send': 0.25}
+### clavinet
+- clav/stab  extra.mix={}
+### scratch
+- muted_gtr/funk_guitar  extra.mix={'pan': -0.28, 'level': 2.0}
+
+YOUR JOB
+Fix the balance. You control each part's mix override, which takes these keys: level (dB), low (low shelf dB), hp (high-pass Hz), lp (low-pass Hz), pres (presence dB), air (air dB), mud (bell cut dB around 330 Hz), pan (-1..1), send (reverb send).
+
+Do not drop anyone. Do not change what they play — only the balance.
+
+Write valid JSON to exactly this path:
+  session/runs/session-01/parts/maestro-mix.json
+Shape: {"mix": {"sticks": {"key": value}, "lowend": {...}, ...}, "note": "one sentence on what you changed"}
+
+Then reply in 2-3 sentences: what was wrong and what you did.

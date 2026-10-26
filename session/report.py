@@ -85,8 +85,13 @@ def main() -> int:
     add("## Round one — everyone writes blind\n")
     add("No player could see or hear the others. Each was told the chart, the "
         "vocabulary they were allowed to use, and to write one part.\n")
+    if not os.path.isdir(os.path.join(run_dir, "parts", "round1")):
+        add("*(This session ran before round-one snapshots existed. Where a player "
+            "revised in round two, the part summary below is their revised part; "
+            "their round-one words are unchanged.)*\n")
     for player in PLAYERS:
-        data = load(os.path.join(run_dir, "parts", f"{player}.json"))
+        data = (load(os.path.join(run_dir, "parts", "round1", f"{player}.json"))
+                or load(os.path.join(run_dir, "parts", f"{player}.json")))
         reply = read(os.path.join(run_dir, "transcript", f"r1-{player}.reply.txt")).strip()
         if not data:
             add(f"### {TITLES[player]} (`{player}`) — sat this one out\n")
@@ -125,9 +130,28 @@ def main() -> int:
             if verdict.get("note"):
                 add(f"> {verdict['note']}\n")
 
+    # ------------------------------------------------------ round four: mix
+    mix = load(os.path.join(run_dir, "mix-round.json"))
+    if mix:
+        add("## Round four — the mix\n")
+        add("The players set their own faders and the sum was wrong, because none of "
+            "them can hear it. The bandleader was handed the measurements.\n")
+        add("**Before**\n")
+        add("```")
+        add(mix.get("before", "").strip())
+        add("```\n")
+        add(f"*{mix.get('reply', '').strip()}*\n")
+        add("**After**\n")
+        add("```")
+        add(mix.get("after", "").strip())
+        add("```\n")
+
     # --------------------------------------------------------------- record
     add("## The record\n")
-    if result.get("render"):
+    if mix:
+        add("The final render is the mixed take: `score-v2.json` in this run "
+            "directory re-renders it exactly.\n")
+    elif result.get("render"):
         add("```")
         add(result["render"])
         add("```\n")

@@ -1,0 +1,23 @@
+{
+  "player": "scratch",
+  "parts": [
+    {
+      "inst": "muted_gtr",
+      "role": "funk_guitar",
+      "start_bar": 0,
+      "gain": 0.95,
+      "octave": 0,
+      "jitter": 3,
+      "swing": 0.0,
+      "register": [52, 68],
+      "voices": 4,
+      "rootless": false,
+      "extra": {
+        "grid": [0, 5, 7, 12, 15],
+        "accents": [0, 15],
+        "mix": {"pan": -0.28, "level": 2.0}
+      }
+    }
+  ],
+  "comment": "Five scratches a bar: the one rings as the chank with the kick and the bass root, then dead notes on the e of 2, the a of 2 and the four with the snare, and the a of 4 rings as the answer into the next one. Four voices in the voicing so the renderer's top-three rule drops the root - the scratch lands G3-B3-D4, above every bass pop and a fourth under the clav's 67 floor. Steps 2, 6 and 10 stay empty because they are the clav's, and 3 and 11 stay empty because that is where the bass octave pops land; I am not on the e of 3 either, that is the kick's and the bass asked for it."
+}

@@ -1,0 +1,151 @@
+{
+  "run_id": "session-01",
+  "score": "/home/josh/hermes-band/session/runs/session-01/score.json",
+  "parts": {
+    "sticks": {
+      "player": "sticks",
+      "parts": [
+        {
+          "inst": "drums",
+          "role": "drums",
+          "start_bar": 0,
+          "gain": 1.0,
+          "jitter": 2,
+          "extra": {
+            "pattern": "funk",
+            "fill": false,
+            "mix": {
+              "level": 1.0,
+              "hp": 42,
+              "mud": -2.5
+            }
+          }
+        }
+      ],
+      "comment": "One kit, funk pattern, no fill: kick on the one plus two pushes at the and of 2 and the e of 3, snare accent on 2 and 4 with ghosts either side, hats running sixteenths as a wash with the offbeats a hair ahead of the grid. The section levels handle the dynamics, so the grid is identical for 16 bars and nothing here is busier than the one."
+    },
+    "lowend": {
+      "player": "lowend",
+      "parts": [
+        {
+          "inst": "fingerbass",
+          "role": "slap_bass",
+          "start_bar": 0,
+          "end_bar": null,
+          "gain": 1.0,
+          "octave": 0,
+          "swing": 0.0,
+          "jitter": 2,
+          "extra": {
+            "bass_reg": [
+              40,
+              52
+            ],
+            "mix": {
+              "level": -4.0,
+              "hp": 42,
+              "mud": -2.0,
+              "low": 0.5,
+              "pan": 0.0,
+              "send": 0.25
+            }
+          }
+        }
+      ],
+      "comment": "One line for all sixteen bars, eleven notes a bar: thumb on the root at the one, ghost at the and of 1, octave at the a of 1, root on 2, the octave pop on the and of 2, ghost at the a of 2, root on 3, fifth on the and of 3, octave at the a of 3, ghost at the e of 4, octave pop on the and of 4. Empty on the e of 1, the e of 2, the e of 3, the four and the a of 4 - the e of 3 is the kick's own, and the back half of the four is the guitar's. Root sits E2-A2 so the low end stays a bass, which puts the pops on E3, F#3 and A3 and therefore on the guitar's bottom voice on the F#m7 bars."
+    },
+    "clavinet": {
+      "player": "clavinet",
+      "parts": [
+        {
+          "inst": "clav",
+          "role": "stab",
+          "start_bar": 2,
+          "end_bar": null,
+          "gain": 0.86,
+          "octave": 0,
+          "swing": 0.0,
+          "jitter": 2,
+          "register": [
+            64,
+            80
+          ],
+          "voices": 3,
+          "rootless": true,
+          "howl": 0.0,
+          "extra": {
+            "steps": [
+              2,
+              6,
+              10
+            ],
+            "len16": 1.1,
+            "vel": 84
+          }
+        }
+      ],
+      "comment": "Three stabs a bar on the ands of 1, 2 and 3, rootless three-note voicings up at 64-80 so the clav sits a fourth above the guitar's scratch instead of in it, and nothing at all on step 4 of the bar. I stay out until bar 2 and let the section levels do the dynamics; the last six sixteenths of every bar are deliberately empty."
+    },
+    "scratch": {
+      "player": "scratch",
+      "parts": [
+        {
+          "inst": "muted_gtr",
+          "role": "funk_guitar",
+          "start_bar": 0,
+          "gain": 0.95,
+          "octave": 0,
+          "jitter": 3,
+          "swing": 0.0,
+          "register": [
+            52,
+            68
+          ],
+          "voices": 4,
+          "rootless": false,
+          "extra": {
+            "grid": [
+              0,
+              5,
+              7,
+              12,
+              15
+            ],
+            "accents": [
+              0,
+              15
+            ],
+            "mix": {
+              "pan": -0.28,
+              "level": 2.0
+            }
+          }
+        }
+      ],
+      "comment": "Five scratches a bar: the one rings as the chank with the kick and the bass root, then dead notes on the e of 2, the a of 2 and the four with the snare, and the a of 4 rings as the answer into the next one. Four voices in the voicing so the renderer's top-three rule drops the root - the scratch lands G3-B3-D4, above every bass pop and a fourth under the clav's 67 floor. Steps 2, 6 and 10 stay empty because they are the clav's, and 3 and 11 stay empty because that is where the bass octave pops land; I am not on the e of 3 either, that is the kick's and the bass asked for it."
+    }
+  },
+  "keep": [
+    "sticks",
+    "lowend",
+    "clavinet",
+    "scratch"
+  ],
+  "verdict": {
+    "keep": [
+      "sticks",
+      "lowend",
+      "clavinet",
+      "scratch"
+    ],
+    "note": "All four stay: nobody is fighting for the same register, so the single change that mattered was in the mix, not the roster - clav up 3 dB and the bass low shelf out 2.5 dB with its hp at 55, which takes 60-250 Hz from 49.4% to 42.3% and the render from 'too much mud' to clean."
+  },
+  "timings": {
+    "sticks": 75.8516616821289,
+    "lowend": 138.88781595230103,
+    "clavinet": 129.42764592170715,
+    "scratch": 303.2277750968933,
+    "maestro": 239.88744497299194
+  },
+  "render": "score: 38.32s (musical 36.92s) peak -0.89  parts 4\n  -> /home/josh/hermes-band/out/score/score.mp3"
+}

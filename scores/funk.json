@@ -1,0 +1,183 @@
+{
+  "hermes_band": 1,
+  "name": "funk-roundtrip",
+  "bpm": 104.0,
+  "key": "E4",
+  "mode": "dorian",
+  "tonic": 64,
+  "bars": 16,
+  "beats_per_bar": 4,
+  "progression": [
+    "im7",
+    "im7",
+    "im7",
+    "im7",
+    "IV7",
+    "IV7",
+    "im7",
+    "im7",
+    "iim7",
+    "iim7",
+    "im7",
+    "im7",
+    "IV7",
+    "IV7",
+    "IV7",
+    "im7"
+  ],
+  "sections": [
+    [
+      0,
+      4,
+      0.72
+    ],
+    [
+      4,
+      8,
+      0.88
+    ],
+    [
+      8,
+      12,
+      1.0
+    ],
+    [
+      12,
+      14,
+      0.95
+    ],
+    [
+      14,
+      16,
+      0.86
+    ]
+  ],
+  "seed": 41,
+  "parts": [
+    {
+      "inst": "drums",
+      "role": "drums",
+      "start_bar": 0,
+      "gain": 1.0,
+      "octave": 0,
+      "pattern": "folk",
+      "swing": 0.0,
+      "jitter": 3,
+      "voices": 4,
+      "rootless": false,
+      "howl": 0.0,
+      "extra": {
+        "pattern": "funk",
+        "fill": false,
+        "mix": {
+          "level": 1.0,
+          "hp": 42,
+          "mud": -2.5
+        }
+      }
+    },
+    {
+      "inst": "fingerbass",
+      "role": "slap_bass",
+      "start_bar": 0,
+      "gain": 1.0,
+      "octave": 0,
+      "pattern": "folk",
+      "swing": 0.0,
+      "jitter": 2,
+      "register": [
+        33,
+        45
+      ],
+      "voices": 4,
+      "rootless": false,
+      "howl": 0.0,
+      "extra": {
+        "mix": {
+          "low": 0.5,
+          "hp": 42,
+          "mud": -2.0,
+          "level": -4.0
+        }
+      }
+    },
+    {
+      "inst": "muted_gtr",
+      "role": "funk_guitar",
+      "start_bar": 0,
+      "gain": 0.95,
+      "octave": 0,
+      "pattern": "folk",
+      "swing": 0.0,
+      "jitter": 3,
+      "register": [
+        52,
+        76
+      ],
+      "voices": 4,
+      "rootless": false,
+      "howl": 0.0,
+      "extra": {
+        "mix": {
+          "pan": -0.28,
+          "level": 2.0
+        }
+      }
+    },
+    {
+      "inst": "clav",
+      "role": "stab",
+      "start_bar": 2,
+      "gain": 0.9,
+      "octave": 0,
+      "pattern": "folk",
+      "swing": 0.0,
+      "jitter": 2,
+      "register": [
+        55,
+        79
+      ],
+      "voices": 4,
+      "rootless": false,
+      "howl": 0.0,
+      "extra": {
+        "steps": [
+          2,
+          6,
+          10,
+          14
+        ],
+        "len16": 1.2
+      }
+    },
+    {
+      "inst": "brass",
+      "role": "stab",
+      "start_bar": 8,
+      "gain": 0.62,
+      "octave": 0,
+      "pattern": "folk",
+      "swing": 0.0,
+      "jitter": 2,
+      "register": [
+        52,
+        74
+      ],
+      "voices": 4,
+      "rootless": false,
+      "howl": 0.0,
+      "extra": {
+        "steps": [
+          3,
+          11
+        ],
+        "len16": 2.4,
+        "vel": 78,
+        "mix": {
+          "level": 2.0,
+          "send": 1.4
+        }
+      }
+    }
+  ]
+}

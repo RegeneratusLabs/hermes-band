@@ -1,0 +1,31 @@
+
+=== SESSION session-01 ===
+session-01: 16 bars @ 104 BPM, E dorian, 4 players
+
+ROUND 1 — write it blind
+    sticks    resumed from disk (round 1 skipped)
+    lowend    resumed from disk (round 1 skipped)
+    clavinet  resumed from disk (round 1 skipped)
+    scratch   resumed from disk (round 1 skipped)
+
+ROUND 2 — the room
+    sticks     75.9s  ok   1081 chars
+    -> sticks kept their part
+    lowend    138.9s  ok    989 chars
+    -> lowend kept their part
+    clavinet  129.4s  ok    753 chars
+    -> clavinet kept their part
+    scratch   303.2s  ok   1156 chars
+    -> scratch REVISED their part
+
+ROUND 3 — the bandleader calls it
+    maestro   239.9s  ok    676 chars
+    -> kept ['sticks', 'lowend', 'clavinet', 'scratch']
+
+SCORE /home/josh/hermes-band/session/runs/session-01/score.json  (4 parts: sticks, lowend, clavinet, scratch)
+
+MIXDOWN
+score: 38.32s (musical 36.92s) peak -0.89  parts 4
+  -> /home/josh/hermes-band/out/score/score.mp3
+
+=== SESSION COMPLETE — /home/josh/hermes-band/session/runs/session-01 ===

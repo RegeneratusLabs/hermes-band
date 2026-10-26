@@ -187,6 +187,24 @@ if `fluidsynth` or the soundfont isn't installed.
   tell it what to play, in more detail than you'd tell a human, and it plays it
   properly.
 
+## The band
+
+`session/` contains a five-piece band of Hermes Bots: a drummer, a bassist, keys,
+a guitarist and a bandleader. Each is an isolated profile with its own SOUL.md and
+opinions. They write parts, argue about the arrangement, and the bandleader mixes.
+
+```bash
+python session/assemble.py                                   # create the bots
+python session/run.py --brief session/briefs/funk-e-dorian.json
+python session/mix_round.py session/runs/<run-id>             # fix the balance
+python session/report.py session/runs/<run-id>                # write it up
+```
+
+They work from a chart and a vocabulary, not from hearing anything — which is
+what makes the result interesting rather than merely automatic. `session/runs/`
+holds a complete session: every prompt, every reply, the parts they wrote, the
+final score and a report.
+
 ## Using it with Hermes
 
 This is built to be operated by a [Hermes](https://hermes-agent.nousresearch.com)

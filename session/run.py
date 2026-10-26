@@ -88,20 +88,26 @@ def clean_reply(text: str) -> str:
 
 
 def call_bot(profile: str, prompt: str, run_dir: str, tag: str,
-             timeout: int = 300) -> tuple[str, float]:
+             timeout: int = 420) -> tuple[str, float]:
     """One turn. Returns (reply, seconds). Prompt and reply both hit disk."""
     qpath = os.path.join(run_dir, "transcript", f"{tag}.prompt.txt")
     write(qpath, prompt)
     t0 = time.time()
-    proc = subprocess.run(
-        [HERMES, "-p", profile, "chat", "--query-file", qpath, "--oneshot", "-Q",
-         "--in", REPO],
-        capture_output=True, text=True, timeout=timeout,
-    )
-    dt = time.time() - t0
-    reply = clean_reply((proc.stdout or "").strip() or (proc.stderr or "").strip())
+    try:
+        proc = subprocess.run(
+            [HERMES, "-p", profile, "chat", "--query-file", qpath, "--oneshot", "-Q",
+             "--in", REPO],
+            capture_output=True, text=True, timeout=timeout,
+        )
+        dt = time.time() - t0
+        raw = (proc.stdout or "").strip() or (proc.stderr or "").strip()
+        reply = clean_reply(raw)
+        status = "ok" if proc.returncode == 0 else f"exit {proc.returncode}"
+    except subprocess.TimeoutExpired:
+        dt = time.time() - t0
+        reply = ""
+        status = f"TIMEOUT after {timeout}s"
     write(os.path.join(run_dir, "transcript", f"{tag}.reply.txt"), reply)
-    status = "ok" if proc.returncode == 0 else f"exit {proc.returncode}"
     log(f"    {profile:9} {dt:5.1f}s  {status}  {len(reply):5d} chars")
     return reply, dt
 
@@ -227,6 +233,8 @@ def main() -> int:
     ap.add_argument("--only", default=None, help="comma separated players")
     ap.add_argument("--room", default=None)
     ap.add_argument("--no-render", action="store_true")
+    ap.add_argument("--resume", action="store_true",
+                    help="reuse parts already on disk instead of redoing round 1")
     args = ap.parse_args()
 
     brief = json.loads(read(args.brief))
@@ -246,6 +254,13 @@ def main() -> int:
     timings: dict[str, float] = {}
     for player in players:
         out_path = os.path.join(parts_dir, f"{player}.json")
+        if args.resume and os.path.exists(out_path):
+            prev = parse_json_file(out_path)
+            if part_gate(player, prev) is None:
+                log(f"    {player:9} resumed from disk (round 1 skipped)")
+                parts[player] = prev
+                timings[player] = 0.0
+                continue
         if os.path.exists(out_path):
             os.remove(out_path)
         reply, dt = call_bot(player, round1_prompt(player, brief, out_path),
@@ -266,6 +281,12 @@ def main() -> int:
                 log(f"    -> still rejected: {err}. Sitting this one out.")
                 data = None
         parts[player] = data
+    # snapshot round one: a later revision must not rewrite what was written blind
+    snap = os.path.join(parts_dir, "round1")
+    os.makedirs(snap, exist_ok=True)
+    for player, data in parts.items():
+        if data is not None:
+            write(os.path.join(snap, f"{player}.json"), json.dumps(data, indent=2) + "\n")
     log("")
 
     # ---------------------------------------------------------------- round 2

@@ -1,0 +1,130 @@
+Round two. Same session, same tune. THE BRIEF
+  tune:        session-01
+  key:         E dorian
+  tempo:       104 BPM
+  form:        16 bars, 4/4
+  progression: im7 | im7 | im7 | im7 | IV7 | IV7 | im7 | im7 | iim7 | iim7 | im7 | im7 | IV7 | IV7 | IV7 | im7
+  sections:    bars 0-3 at level 0.72, bars 4-7 at level 0.88, bars 8-11 at level 1.0, bars 12-13 at level 0.95, bars 14-15 at level 0.86
+  direction:   Straight-up funk. Nothing clever, nothing busy. The one is everything, the guitar must not fill every hole, and it has to groove at 104 or it does not count.
+
+Here is what the others wrote while you were working:
+
+### sticks
+```json
+{
+  "player": "sticks",
+  "parts": [
+    {
+      "inst": "drums",
+      "role": "drums",
+      "start_bar": 0,
+      "gain": 1.0,
+      "jitter": 2,
+      "extra": {
+        "pattern": "funk",
+        "fill": false,
+        "mix": {
+          "level": 1.0,
+          "hp": 42,
+          "mud": -2.5
+        }
+      }
+    }
+  ],
+  "comment": "One kit, funk pattern, no fill: kick on the one plus two pushes at the and of 2 and the e of 3, snare accent on 2 and 4 with ghosts either side, hats running sixteenths as a wash with the offbeats a hair ahead of the grid. The section levels handle the dynamics, so the grid is identical for 16 bars and nothing here is busier than the one."
+}
+```
+they said: One kit, funk pattern, no fill: kick on the one plus two pushes at the and of 2 and the e of 3, snare accent on 2 and 4 with ghosts either side, hats running sixteenths as a wash with the offbeats a hair ahead of the grid. The section levels handle the dynamics, so the grid is identical for 16 bars and nothing here is busier than the one.
+
+### clavinet
+```json
+{
+  "player": "clavinet",
+  "parts": [
+    {
+      "inst": "clav",
+      "role": "stab",
+      "start_bar": 2,
+      "end_bar": null,
+      "gain": 0.86,
+      "octave": 0,
+      "swing": 0.0,
+      "jitter": 2,
+      "register": [
+        64,
+        80
+      ],
+      "voices": 3,
+      "rootless": true,
+      "howl": 0.0,
+      "extra": {
+        "steps": [
+          2,
+          6,
+          10
+        ],
+        "len16": 1.1,
+        "vel": 84
+      }
+    }
+  ],
+  "comment": "Three stabs a bar on the ands of 1, 2 and 3, rootless three-note voicings up at 64-80 so the clav sits a fourth above the guitar's scratch instead of in it, and nothing at all on step 4 of the bar. I stay out until bar 2 and let the section levels do the dynamics; the last six sixteenths of every bar are deliberately empty."
+}
+```
+they said: Three stabs a bar on the ands of 1, 2 and 3, rootless three-note voicings up at 64-80 so the clav sits a fourth above the guitar's scratch instead of in it, and nothing at all on step 4 of the bar. I stay out until bar 2 and let the section levels do the dynamics; the last six sixteenths of every bar are deliberately empty.
+
+### scratch
+```json
+{
+  "player": "scratch",
+  "parts": [
+    {
+      "inst": "muted_gtr",
+      "role": "funk_guitar",
+      "start_bar": 0,
+      "gain": 0.95,
+      "octave": 0,
+      "jitter": 3,
+      "swing": 0.0,
+      "register": [
+        52,
+        68
+      ],
+      "voices": 3,
+      "rootless": false,
+      "extra": {
+        "grid": [
+          3,
+          5,
+          7,
+          11,
+          13,
+          15
+        ],
+        "accents": [
+          3,
+          11
+        ],
+        "mix": {
+          "pan": -0.28,
+          "level": 2.0
+        }
+      }
+    }
+  ],
+  "comment": "Six muted scratches a bar, all late in the beat \u2014 the a of 1, the e and a of 2, the a of 3, the e and a of 4 \u2014 so all four downbeats and all four ands stay clear for the kick, bass and clav, and only the a-of-1 and a-of-3 ring out as three-note shells. The shells sit E3-D4, above the bass and under the keys, because one of us had to move registers and it was not going to be the clav."
+}
+```
+they said: Six muted scratches a bar, all late in the beat — the a of 1, the e and a of 2, the a of 3, the e and a of 4 — so all four downbeats and all four ands stay clear for the kick, bass and clav, and only the a-of-1 and a-of-3 ring out as three-note shells. The shells sit E3-D4, above the bass and under the keys, because one of us had to move registers and it was not going to be the clav.
+
+YOUR JOB
+React to them, then decide about your own part.
+- If someone is sitting in your space, say so and name what you would change.
+- If the drummer is too busy, or the guitar is filling every hole, say it.
+- If their part is better than yours, say that too. No false politeness.
+
+Then: keep your part as it is, or revise it.
+- To keep it: write nothing.
+- To revise: rewrite /home/josh/hermes-band/session/runs/session-01/parts/lowend.json with the new version (same shape).
+
+Reply in 2-3 sentences: your critique, and whether you changed anything. Do not paste JSON.

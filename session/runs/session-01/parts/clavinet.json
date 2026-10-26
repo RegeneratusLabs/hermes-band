@@ -1,0 +1,25 @@
+{
+  "player": "clavinet",
+  "parts": [
+    {
+      "inst": "clav",
+      "role": "stab",
+      "start_bar": 2,
+      "end_bar": null,
+      "gain": 0.86,
+      "octave": 0,
+      "swing": 0.0,
+      "jitter": 2,
+      "register": [64, 80],
+      "voices": 3,
+      "rootless": true,
+      "howl": 0.0,
+      "extra": {
+        "steps": [2, 6, 10],
+        "len16": 1.1,
+        "vel": 84
+      }
+    }
+  ],
+  "comment": "Three stabs a bar on the ands of 1, 2 and 3, rootless three-note voicings up at 64-80 so the clav sits a fourth above the guitar's scratch instead of in it, and nothing at all on step 4 of the bar. I stay out until bar 2 and let the section levels do the dynamics; the last six sixteenths of every bar are deliberately empty."
+}

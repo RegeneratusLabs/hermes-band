@@ -1,0 +1,35 @@
+{
+  "mix": {
+    "sticks": {
+      "level": 0.5,
+      "hp": 50,
+      "mud": -3.0,
+      "pres": 2.0,
+      "air": 1.0
+    },
+    "lowend": {
+      "level": -7.0,
+      "hp": 55,
+      "low": -3.5,
+      "mud": -3.5,
+      "lp": 2200,
+      "pan": 0.0,
+      "send": 0.2
+    },
+    "clavinet": {
+      "level": 1.0,
+      "hp": 190,
+      "mud": -2.0,
+      "pres": 2.5,
+      "air": 1.0
+    },
+    "scratch": {
+      "level": 3.0,
+      "hp": 260,
+      "mud": -3.5,
+      "pres": 2.0,
+      "pan": -0.28
+    }
+  },
+  "note": "Removed the 60-250 Hz bulge by pulling the bass 3 dB with a -3.5 dB low shelf and a 55 Hz high-pass, raising the kick's high-pass to 50 Hz, and lifting both mid comps clear of the mud, then added presence and a little air back so the mid and top didn't fall away with it."
+}

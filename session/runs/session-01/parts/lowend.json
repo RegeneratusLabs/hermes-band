@@ -1,0 +1,27 @@
+{
+  "player": "lowend",
+  "parts": [
+    {
+      "inst": "fingerbass",
+      "role": "slap_bass",
+      "start_bar": 0,
+      "end_bar": null,
+      "gain": 1.0,
+      "octave": 0,
+      "swing": 0.0,
+      "jitter": 2,
+      "extra": {
+        "bass_reg": [40, 52],
+        "mix": {
+          "level": -4.0,
+          "hp": 42,
+          "mud": -2.0,
+          "low": 0.5,
+          "pan": 0.0,
+          "send": 0.25
+        }
+      }
+    }
+  ],
+  "comment": "One line for all sixteen bars, eleven notes a bar: thumb on the root at the one, ghost at the and of 1, octave at the a of 1, root on 2, the octave pop on the and of 2, ghost at the a of 2, root on 3, fifth on the and of 3, octave at the a of 3, ghost at the e of 4, octave pop on the and of 4. Empty on the e of 1, the e of 2, the e of 3, the four and the a of 4 - the e of 3 is the kick's own, and the back half of the four is the guitar's. Root sits E2-A2 so the low end stays a bass, which puts the pops on E3, F#3 and A3 and therefore on the guitar's bottom voice on the F#m7 bars."
+}

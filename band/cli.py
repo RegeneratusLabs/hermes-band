@@ -66,11 +66,17 @@ def cmd_demo(args) -> int:
 
 def cmd_play(args) -> int:
     """Render a score file. This is the entry point the band uses."""
+    import json
+
     from . import score as score_mod
     from .renderer import render
 
-    arr = score_mod.load(args.score)
-    name = os.path.splitext(os.path.basename(args.score))[0]
+    with open(args.score, encoding="utf-8") as f:
+        data = json.load(f)
+    score_mod.validate(data)
+    arr = score_mod.from_dict(data)
+    # the score names itself; the filename is just where it happens to live
+    name = data.get("name") or os.path.splitext(os.path.basename(args.score))[0]
     room = score_mod.validate_room(args.room)
     r = render(arr, os.path.join(args.out, name), room=room, lufs=args.lufs, name=name)
     print(f"{name}: {r['duration']:.2f}s (musical {r['music_duration']:.2f}s) "

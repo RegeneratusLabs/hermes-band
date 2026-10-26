@@ -1,0 +1,4 @@
+{
+  "keep": ["sticks", "lowend", "clavinet", "scratch"],
+  "note": "All four stay: nobody is fighting for the same register, so the single change that mattered was in the mix, not the roster - clav up 3 dB and the bass low shelf out 2.5 dB with its hp at 55, which takes 60-250 Hz from 49.4% to 42.3% and the render from 'too much mud' to clean."
+}

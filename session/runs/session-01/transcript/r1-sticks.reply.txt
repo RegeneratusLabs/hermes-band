@@ -1,0 +1,2 @@
+One kit, the funk grid, no fill. Kick on the one with two pushes, snare accent on 2 and 4 with ghosts either side, hats sixteenths as a wash with the offbeats a hair ahead — section levels do the dynamics so it builds without me adding anything.
+Part written and validated at /home/josh/hermes-band/session/runs/session-01/parts/sticks.json; a drums-only render came out 38.3s, peak -0.96 dB, which is the tune at 104. That 59% in 60-250 Hz is the kit solo with no bass under it — check it again in the full mix before blaming the kick.

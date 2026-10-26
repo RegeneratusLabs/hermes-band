@@ -1,0 +1,41 @@
+{
+  "before": "  lr_balance_db        -0.07\n  stereo_corr          0.743\n  bands                {'sub': np.float64(6.6), 'bass': np.float64(49.7), 'mid': np.float64(34.8), 'presence': np.float64(8.7), 'air': np.float64(0.3), 'centroid_hz': 714}\n  lufs                 -13.9\n  lra                  2.2\n  true_peak_db         -0.9",
+  "after": "  lr_balance_db        0.05\n  stereo_corr          0.77\n  bands                {'sub': np.float64(5.8), 'bass': np.float64(34.6), 'mid': np.float64(47.4), 'presence': np.float64(11.8), 'air': np.float64(0.4), 'centroid_hz': 1019}\n  lufs                 -14.0\n  lra                  2.0\n  true_peak_db         -0.9",
+  "verdict": {
+    "mix": {
+      "sticks": {
+        "level": 0.5,
+        "hp": 50,
+        "mud": -3.0,
+        "pres": 2.0,
+        "air": 1.0
+      },
+      "lowend": {
+        "level": -7.0,
+        "hp": 55,
+        "low": -3.5,
+        "mud": -3.5,
+        "lp": 2200,
+        "pan": 0.0,
+        "send": 0.2
+      },
+      "clavinet": {
+        "level": 1.0,
+        "hp": 190,
+        "mud": -2.0,
+        "pres": 2.5,
+        "air": 1.0
+      },
+      "scratch": {
+        "level": 3.0,
+        "hp": 260,
+        "mud": -3.5,
+        "pres": 2.0,
+        "pan": -0.28
+      }
+    },
+    "note": "Removed the 60-250 Hz bulge by pulling the bass 3 dB with a -3.5 dB low shelf and a 55 Hz high-pass, raising the kick's high-pass to 50 Hz, and lifting both mid comps clear of the mud, then added presence and a little air back so the mid and top didn't fall away with it."
+  },
+  "reply": "Wrote `session/runs/session-01/parts/maestro-mix.json` and rendered the merged score with the same name/room the round will use, so these are real measurements of the take: bass 60-250 Hz 49.7% \u2192 34.1%, mid 34.8% \u2192 47.9%, presence 8.7% \u2192 11.6%, centroid 714 \u2192 1011 Hz, L/R +0.04 dB, correlation 0.738, \u221213.9 LUFS, \u22120.9 dBTP, verdict clean.\nThe problem was the bottom of the arrangement, not the parts: bass sat at +0.5 dB shelf under a 42 Hz high-pass, and the guitar was pushed 6 dB above its own instrument default and filling the same 200-400 Hz as the clavinet, so four parts were all leaning on the same 60-250 Hz shelf. I pulled the bass 3 dB with a \u22123.5 dB low shelf and a 55 Hz high-pass, lifted the kick's high-pass to 50 Hz, cleared both mid instruments with higher high-passes and deeper 330 Hz cuts, then made up the loss with presence on all four so the top didn't go with the mud \u2014 and I gave the guitar back its level so it is still the scratch you hear, not a ghost behind the clav.",
+  "score": "session/runs/session-01/score-v2.json"
+}

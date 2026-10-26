@@ -1,0 +1,156 @@
+{
+  "hermes_band": 1,
+  "name": "session-01-session-01",
+  "bpm": 104,
+  "tonic": 64,
+  "key": "E",
+  "mode": "dorian",
+  "bars": 16,
+  "beats_per_bar": 4,
+  "progression": [
+    "im7",
+    "im7",
+    "im7",
+    "im7",
+    "IV7",
+    "IV7",
+    "im7",
+    "im7",
+    "iim7",
+    "iim7",
+    "im7",
+    "im7",
+    "IV7",
+    "IV7",
+    "IV7",
+    "im7"
+  ],
+  "sections": [
+    [
+      0,
+      4,
+      0.72
+    ],
+    [
+      4,
+      8,
+      0.88
+    ],
+    [
+      8,
+      12,
+      1.0
+    ],
+    [
+      12,
+      14,
+      0.95
+    ],
+    [
+      14,
+      16,
+      0.86
+    ]
+  ],
+  "seed": 41,
+  "parts": [
+    {
+      "inst": "drums",
+      "role": "drums",
+      "start_bar": 0,
+      "gain": 1.0,
+      "jitter": 2,
+      "extra": {
+        "pattern": "funk",
+        "fill": false,
+        "mix": {
+          "level": 1.0,
+          "hp": 42,
+          "mud": -2.5
+        }
+      }
+    },
+    {
+      "inst": "fingerbass",
+      "role": "slap_bass",
+      "start_bar": 0,
+      "end_bar": null,
+      "gain": 1.0,
+      "octave": 0,
+      "swing": 0.0,
+      "jitter": 2,
+      "extra": {
+        "bass_reg": [
+          40,
+          52
+        ],
+        "mix": {
+          "level": -4.0,
+          "hp": 42,
+          "mud": -2.0,
+          "low": 0.5,
+          "pan": 0.0,
+          "send": 0.25
+        }
+      }
+    },
+    {
+      "inst": "clav",
+      "role": "stab",
+      "start_bar": 2,
+      "end_bar": null,
+      "gain": 0.86,
+      "octave": 0,
+      "swing": 0.0,
+      "jitter": 2,
+      "register": [
+        64,
+        80
+      ],
+      "voices": 3,
+      "rootless": true,
+      "howl": 0.0,
+      "extra": {
+        "steps": [
+          2,
+          6,
+          10
+        ],
+        "len16": 1.1,
+        "vel": 84
+      }
+    },
+    {
+      "inst": "muted_gtr",
+      "role": "funk_guitar",
+      "start_bar": 0,
+      "gain": 0.95,
+      "octave": 0,
+      "jitter": 3,
+      "swing": 0.0,
+      "register": [
+        52,
+        68
+      ],
+      "voices": 4,
+      "rootless": false,
+      "extra": {
+        "grid": [
+          0,
+          5,
+          7,
+          12,
+          15
+        ],
+        "accents": [
+          0,
+          15
+        ],
+        "mix": {
+          "pan": -0.28,
+          "level": 2.0
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "hermes_band": 1,
+  "name": "session-01-session-01-mixed",
+  "bpm": 104,
+  "tonic": 64,
+  "key": "E",
+  "mode": "dorian",
+  "bars": 16,
+  "beats_per_bar": 4,
+  "progression": [
+    "im7",
+    "im7",
+    "im7",
+    "im7",
+    "IV7",
+    "IV7",
+    "im7",
+    "im7",
+    "iim7",
+    "iim7",
+    "im7",
+    "im7",
+    "IV7",
+    "IV7",
+    "IV7",
+    "im7"
+  ],
+  "sections": [
+    [
+      0,
+      4,
+      0.72
+    ],
+    [
+      4,
+      8,
+      0.88
+    ],
+    [
+      8,
+      12,
+      1.0
+    ],
+    [
+      12,
+      14,
+      0.95
+    ],
+    [
+      14,
+      16,
+      0.86
+    ]
+  ],
+  "seed": 41,
+  "parts": [
+    {
+      "inst": "drums",
+      "role": "drums",
+      "start_bar": 0,
+      "gain": 1.0,
+      "jitter": 2,
+      "extra": {
+        "pattern": "funk",
+        "fill": false,
+        "mix": {
+          "level": 0.5,
+          "hp": 50,
+          "mud": -3.0,
+          "pres": 2.0,
+          "air": 1.0
+        }
+      }
+    },
+    {
+      "inst": "fingerbass",
+      "role": "slap_bass",
+      "start_bar": 0,
+      "end_bar": null,
+      "gain": 1.0,
+      "octave": 0,
+      "swing": 0.0,
+      "jitter": 2,
+      "extra": {
+        "bass_reg": [
+          40,
+          52
+        ],
+        "mix": {
+          "level": -7.0,
+          "hp": 55,
+          "mud": -3.5,
+          "low": -3.5,
+          "pan": 0.0,
+          "send": 0.2,
+          "lp": 2200
+        }
+      }
+    },
+    {
+      "inst": "clav",
+      "role": "stab",
+      "start_bar": 2,
+      "end_bar": null,
+      "gain": 0.86,
+      "octave": 0,
+      "swing": 0.0,
+      "jitter": 2,
+      "register": [
+        64,
+        80
+      ],
+      "voices": 3,
+      "rootless": true,
+      "howl": 0.0,
+      "extra": {
+        "steps": [
+          2,
+          6,
+          10
+        ],
+        "len16": 1.1,
+        "vel": 84,
+        "mix": {
+          "level": 1.0,
+          "hp": 190,
+          "mud": -2.0,
+          "pres": 2.5,
+          "air": 1.0
+        }
+      }
+    },
+    {
+      "inst": "muted_gtr",
+      "role": "funk_guitar",
+      "start_bar": 0,
+      "gain": 0.95,
+      "octave": 0,
+      "jitter": 3,
+      "swing": 0.0,
+      "register": [
+        52,
+        68
+      ],
+      "voices": 4,
+      "rootless": false,
+      "extra": {
+        "grid": [
+          0,
+          5,
+          7,
+          12,
+          15
+        ],
+        "accents": [
+          0,
+          15
+        ],
+        "mix": {
+          "pan": -0.28,
+          "level": 3.0,
+          "hp": 260,
+          "mud": -3.5,
+          "pres": 2.0
+        }
+      }
+    }
+  ]
+}

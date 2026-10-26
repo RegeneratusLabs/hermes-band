@@ -1,0 +1,22 @@
+{
+  "player": "sticks",
+  "parts": [
+    {
+      "inst": "drums",
+      "role": "drums",
+      "start_bar": 0,
+      "gain": 1.0,
+      "jitter": 2,
+      "extra": {
+        "pattern": "funk",
+        "fill": false,
+        "mix": {
+          "level": 1.0,
+          "hp": 42,
+          "mud": -2.5
+        }
+      }
+    }
+  ],
+  "comment": "One kit, funk pattern, no fill: kick on the one plus two pushes at the and of 2 and the e of 3, snare accent on 2 and 4 with ghosts either side, hats running sixteenths as a wash with the offbeats a hair ahead of the grid. The section levels handle the dynamics, so the grid is identical for 16 bars and nothing here is busier than the one."
+}
