@@ -60,8 +60,8 @@ It's not on PyPI yet — clone and install.
 ## Use it
 
 ```bash
-hermes-band demo              # render all three bundled arrangements
-hermes-band demo -t bed       # just one
+hermes-band demo              # render every bundled arrangement
+hermes-band demo -t funk      # just one
 hermes-band check out/bed/bed.wav   # measure a render and flag problems
 ```
 
@@ -94,10 +94,13 @@ repeats as needed), and a list of `Part`s. Each part picks an instrument and a
 | `sparkle` | sparse high accents |
 | `melody` | a generated lead line that lands on chord tones |
 | `drums` | a kit pattern with humanised timing |
+| `funk_guitar` | chicken scratch — muted off-sixteenths with accents |
+| `slap_bass` | syncopated thumb and pop, with ghost notes |
+| `stab` | sparse, short chord hits |
 
 **Patterns** — `fingerpick`/`arp`: `folk`, `travis`, `sparse`, `arp_up`,
 `rolling`, `oompah`. **Drums**: `folk_soft`, `folk_full`, `pulse`, `heartbeat`,
-`boom_bap`.
+`boom_bap`, `funk`.
 
 **Rooms** — `dry`, `close`, `room`, `hall`, `cathedral`.
 
@@ -115,8 +118,9 @@ Every part takes `start_bar`, `end_bar`, `gain`, `octave`, `jitter`, `swing`,
 overrides.
 
 Instruments are General MIDI: `piano`, `rhodes`, `vibes`, `nylon`, `steel`,
-`clean_elec`, `upright`, `fingerbass`, `cello`, `strings`, `choir`, `flute`,
-`kalimba`, `warm_pad`, `glass_pad`. See `band/gm.py` for the full list.
+`clean_elec`, `muted_gtr`, `upright`, `fingerbass`, `cello`, `strings`, `choir`,
+`flute`, `clav`, `organ`, `brass`, `kalimba`, `warm_pad`, `glass_pad`. See
+`band/gm.py` for the full list.
 
 ## Five things that make it sound like music
 

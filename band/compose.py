@@ -249,6 +249,72 @@ def role_drums(p: Part, c: Ctx) -> list[tuple]:
     return out
 
 
+# ----------------------------------------------------------------- funk
+
+# The off-sixteenths of every beat: the "e" and "a". Landing here, not on the
+# downbeat, is what makes a guitar scratch rather than strum.
+FUNK_GRID = [1, 3, 5, 7, 9, 11, 13, 15]
+
+# (16th step, semitones above the root, velocity, length in 16ths)
+SLAP = [
+    (0,   0, 100, 3.0),   # thumb, hard on the one
+    (2,   0,  34, 0.5),   # ghost
+    (3,  12,  62, 1.0),
+    (4,   0,  90, 2.0),
+    (6,  12, 106, 1.2),   # pop
+    (7,   0,  32, 0.5),   # ghost
+    (8,   0,  94, 2.2),
+    (10,  7,  98, 1.0),
+    (11, 12,  58, 0.9),
+    (13,  0,  34, 0.5),   # ghost
+    (14, 12, 104, 1.4),   # pop
+]
+
+
+def role_funk_guitar(p: Part, c: Ctx) -> list[tuple]:
+    """Chicken scratch. Muting the strings IS the part — short, quiet, and on
+    the off-sixteenths, with the odd accent that lets a chord ring."""
+    out = []
+    grid = p.extra.get("grid", FUNK_GRID)
+    accents = p.extra.get("accents", [3, 11])
+    top = sorted(c.voicing)[-3:]        # upper voices; the low end belongs to the bass
+    for step in grid:
+        tick = int(step * DIV / 4) + c.rng.randint(-4, 4)
+        accented = step in accents
+        vel = (68 if accented else 46) + c.rng.randint(-5, 5)
+        vel *= p.gain * c.level
+        dur = int(DIV / 4 * (1.4 if accented else 0.55))
+        for n in (top if accented else top[:2]):
+            out.append((tick, n + 12 * p.octave, vel, dur))
+    return out
+
+
+def role_slap_bass(p: Part, c: Ctx) -> list[tuple]:
+    """Syncopated slap: thumb on the root, pops an octave up, ghosts between."""
+    out = []
+    root = c.bass + 12 * p.octave
+    for step, interval, vel, length in SLAP:
+        tick = int(step * DIV / 4) + c.rng.randint(-3, 3)
+        dur = max(1, int(DIV / 4 * length))
+        out.append((tick, root + interval, vel * p.gain * c.level, dur))
+    return out
+
+
+def role_stab(p: Part, c: Ctx) -> list[tuple]:
+    """Short chord hits. The space between them matters more than the hits."""
+    steps = p.extra.get("steps", [2, 6, 10, 14])
+    length = p.extra.get("len16", 1.4)
+    base = p.extra.get("vel", 86)
+    dur = max(1, int(DIV / 4 * length))
+    out = []
+    for i, step in enumerate(steps):
+        tick = int(step * DIV / 4) + c.rng.randint(-3, 3)
+        vel = (base + (6 if i == 0 else 0)) * p.gain * c.level
+        for n in sorted(c.voicing):
+            out.append((tick, n + 12 * p.octave, vel + c.rng.randint(-3, 3), dur))
+    return out
+
+
 ROLES = {
     "fingerpick": role_fingerpick,
     "strum": role_strum,
@@ -259,6 +325,9 @@ ROLES = {
     "sparkle": role_sparkle,
     "melody": role_melody,
     "drums": role_drums,
+    "funk_guitar": role_funk_guitar,
+    "slap_bass": role_slap_bass,
+    "stab": role_stab,
 }
 
 

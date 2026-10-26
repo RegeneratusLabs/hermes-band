@@ -120,7 +120,8 @@ def test_different_seeds_differ():
 
 def test_all_roles_are_registered_and_callable():
     assert set(ROLES) == {"fingerpick", "strum", "block", "bass_root5",
-                          "bass_walk", "arp", "sparkle", "melody", "drums"}
+                          "bass_walk", "arp", "sparkle", "melody", "drums",
+                          "funk_guitar", "slap_bass", "stab"}
 
 
 @pytest.mark.parametrize("role,kw", [
@@ -133,6 +134,9 @@ def test_all_roles_are_registered_and_callable():
     ("sparkle", {}),
     ("melody", {}),
     ("drums", {"extra": {"pattern": "boom_bap"}}),
+    ("funk_guitar", {}),
+    ("slap_bass", {}),
+    ("stab", {}),
 ])
 def test_each_role_produces_notes(role, kw):
     a = simple(bars=2)

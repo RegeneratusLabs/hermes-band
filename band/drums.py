@@ -60,12 +60,22 @@ BOOM_BAP = {
     gm.HH:    _s("x-o-x-o-x-o-x-o-", 0.30),
 }
 
+# Funk: hard on the one, syncopated kick, and ghost notes between the backbeats.
+# Ghosts are the whole feel — the accents alone sound like a metronome.
+FUNK = {
+    gm.KICK:     _s("x.....x..x......", 0.92),
+    gm.SNARE:    _s("..-o>..-o.-o>-o", 0.80),
+    gm.HH:       _s("x-o-x-o-x-o-x-o-", 0.30),
+    gm.HH_OPEN:  _s("..............o.", 0.26),
+}
+
 PATTERNS = {
     "folk_soft": FOLK_SOFT,
     "folk_full": FOLK_FULL,
     "pulse": PULSE,
     "heartbeat": HEARTBEAT,
     "boom_bap": BOOM_BAP,
+    "funk": FUNK,
 }
 
 # Per-voice microtiming offset in ticks (drummers are never on the grid).

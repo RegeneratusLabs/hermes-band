@@ -61,7 +61,7 @@ arr.add(inst="drums", role="drums", start_bar=4, extra={"pattern": "folk_soft"})
 r = render(arr, "out/bed", room="room", lufs=-14.0, name="bed")
 ```
 
-CLI: `hermes-band demo [-t bed|band|pulse] [-o DIR]` and
+CLI: `hermes-band demo [-t bed|band|pulse|funk] [-o DIR]` and
 `hermes-band check <file.wav>`.
 
 `render()` returns `{wav, mp3, music_duration, duration, peak_db, stems}`.
@@ -97,14 +97,15 @@ musical length in seconds.
 ## Vocabulary
 
 Roles: `fingerpick` `strum` `block` `bass_root5` `bass_walk` `arp` `melody`
-`sparkle` `drums`.
+`sparkle` `drums` `funk_guitar` `slap_bass` `stab`.
 
 Fingering patterns: `folk` `travis` `sparse` `arp_up` `rolling` `oompah`.
-Drum patterns: `folk_soft` `folk_full` `pulse` `heartbeat` `boom_bap`.
+Drum patterns: `folk_soft` `folk_full` `pulse` `heartbeat` `boom_bap` `funk`.
 Rooms: `dry` `close` `room` `hall` `cathedral`.
 Chord symbols: `I` `vi` `bVI` `V7` `Imaj7` `ii7` `m7b5` — case carries quality.
 
-`band/presets.py` has three complete arrangements worth copying from.
+`band/presets.py` has four complete arrangements worth copying from: folk bed,
+full band, minor electronic, and an E-dorian funk groove.
 
 ## Traps that cost real time
 

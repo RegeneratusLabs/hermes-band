@@ -39,6 +39,10 @@ PROFILES = {
     "warm_pad":   dict(hp=150, lp=8000, level=-9.0, pan=0.0, send=1.6),
     "glass_pad":  dict(hp=300, lp=12000, level=-10.0, pan=0.35, send=1.8),
     "drums":      dict(hp=38, lp=15000, pres=2.0, level=6.0, pan=0.0, send=0.5, mud=-1.0),
+    "clav":       dict(hp=190, lp=12000, pres=3.5, level=-5.0, pan=0.32, send=0.8, mud=-2.0),
+    "organ":      dict(hp=120, lp=8000, level=-9.0, pan=-0.20, send=1.3),
+    "muted_gtr":  dict(hp=210, lp=9000, pres=4.0, level=-4.0, pan=-0.34, send=0.5, mud=-2.5),
+    "brass":      dict(hp=150, lp=11000, pres=2.5, level=-9.0, pan=0.28, send=1.2),
 }
 
 

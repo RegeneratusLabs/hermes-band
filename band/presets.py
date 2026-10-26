@@ -86,9 +86,42 @@ def pulse() -> Arrangement:
     return a
 
 
+def funk() -> Arrangement:
+    """E dorian. The one is everything; everything else is off the beat.
+    36.9 s at 104 BPM."""
+    a = Arrangement(
+        bpm=104, key="E", mode="dorian", bars=16, seed=41,
+        progression=["im7", "im7", "im7", "im7",
+                     "IV7", "IV7", "im7", "im7",
+                     "iim7", "iim7", "im7", "im7",
+                     "IV7", "IV7", "IV7", "im7"],
+        sections=[(0, 4, 0.72), (4, 8, 0.88), (8, 12, 1.0),
+                  (12, 14, 0.95), (14, 16, 0.86)],
+    )
+    # the engine room. Funk is kick-and-bass forward, but 54% of the energy down
+    # there turns to mud, so both get pulled back and cleaned up.
+    a.add(inst="drums", role="drums", gain=1.0,
+          extra={"pattern": "funk", "fill": False,
+                 "mix": {"level": 1.0, "hp": 42, "mud": -2.5}})
+    a.add(inst="fingerbass", role="slap_bass", register=(33, 45), jitter=2,
+          extra={"mix": {"low": 0.5, "hp": 42, "mud": -2.0, "level": -4.0}})
+    # the scratch — muted guitar eating the off-sixteenths
+    a.add(inst="muted_gtr", role="funk_guitar", register=(52, 76),
+          gain=0.95, jitter=3,
+          extra={"mix": {"pan": -0.28, "level": 2.0}})
+    # clav stabs coming in, then brass answering later
+    a.add(inst="clav", role="stab", start_bar=2, register=(55, 79), gain=0.9,
+          jitter=2, extra={"steps": [2, 6, 10, 14], "len16": 1.2})
+    a.add(inst="brass", role="stab", start_bar=8, register=(52, 74), gain=0.62,
+          jitter=2, extra={"steps": [3, 11], "len16": 2.4, "vel": 78,
+                           "mix": {"level": 2.0, "send": 1.4}})
+    return a
+
+
 # name -> (arrangement factory, room)
 PRESETS = {
     "bed": (bed, "room"),
     "band": (full_band, "hall"),
     "pulse": (pulse, "close"),
+    "funk": (funk, "close"),
 }
