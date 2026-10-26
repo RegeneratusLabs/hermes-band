@@ -183,6 +183,25 @@ if `fluidsynth` or the soundfont isn't installed.
   tell it what to play, in more detail than you'd tell a human, and it plays it
   properly.
 
+## Using it with Hermes
+
+This is built to be operated by a [Hermes](https://hermes-agent.nousresearch.com)
+agent as much as by a person. `skill/SKILL.md` is a ready-made Hermes skill:
+
+```bash
+cp -r skill ~/.hermes/skills/creative/hermes-band
+```
+
+An agent that loads it gets the workflow, the vocabulary, and — more usefully —
+the traps that cost real time: fluidsynth's ten seconds of trailing silence,
+soundfont patches that differ by 16 dB at the same velocity, and why a sparse
+part should be judged on peak rather than RMS. Those are the things you'd
+otherwise rediscover one wrong render at a time.
+
+If you're wiring this into an agent pipeline, the contract is small: build an
+`Arrangement`, call `render()`, then verify. `render()` returns the file paths
+and the measured peak, so a caller doesn't need to re-measure to know it worked.
+
 ## Credits
 
 This stands on other people's work:
