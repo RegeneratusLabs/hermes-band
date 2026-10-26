@@ -64,6 +64,38 @@ def cmd_demo(args) -> int:
     return 0
 
 
+def cmd_play(args) -> int:
+    """Render a score file. This is the entry point the band uses."""
+    from . import score as score_mod
+    from .renderer import render
+
+    arr = score_mod.load(args.score)
+    name = os.path.splitext(os.path.basename(args.score))[0]
+    room = score_mod.validate_room(args.room)
+    r = render(arr, os.path.join(args.out, name), room=room, lufs=args.lufs, name=name)
+    print(f"{name}: {r['duration']:.2f}s (musical {r['music_duration']:.2f}s) "
+          f"peak {r['peak_db']}  parts {len(r['stems'])}")
+    print(f"  -> {r['mp3']}")
+    return 0
+
+
+def cmd_validate(args) -> int:
+    """Check a score without rendering it."""
+    import json
+    from . import score as score_mod
+
+    for path in args.score:
+        try:
+            with open(path, encoding="utf-8") as f:
+                d = json.load(f)
+            score_mod.validate(d)
+        except Exception as exc:
+            print(f"INVALID {path}: {exc}")
+            return 1
+        print(f"ok      {path}  {score_mod.describe(d)}")
+    return 0
+
+
 def cmd_check(args) -> int:
     sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "tools"))
     try:
@@ -102,6 +134,17 @@ def main(argv=None) -> int:
     dm.add_argument("--lufs", type=float, default=-14.0,
                     help="target loudness (default -14 for social)")
     dm.set_defaults(func=cmd_demo)
+
+    pl = sub.add_parser("play", help="render a score.json")
+    pl.add_argument("score")
+    pl.add_argument("-o", "--out", default="out", help="output directory")
+    pl.add_argument("--room", default="room", help="dry|close|room|hall|cathedral")
+    pl.add_argument("--lufs", type=float, default=-14.0)
+    pl.set_defaults(func=cmd_play)
+
+    va = sub.add_parser("validate", help="check score files without rendering")
+    va.add_argument("score", nargs="+")
+    va.set_defaults(func=cmd_validate)
 
     ck = sub.add_parser("check", help="measure rendered wavs and flag problems")
     ck.add_argument("wav", nargs="+")

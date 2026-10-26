@@ -27,3 +27,7 @@ venv/
 .DS_Store
 .idea/
 .vscode/
+
+# band session scratch — rendered audio and full prompts are not source
+session/runs/**/*.wav
+session/runs/**/*.mp3

@@ -1,0 +1,85 @@
+# The Band — session contract
+
+Everything a player needs to know to write a part that actually renders.
+
+## The instrument/role pairs each player may use
+
+| player | instruments | roles |
+| --- | --- | --- |
+| sticks (drums) | `drums` | `drums` |
+| lowend (bass) | `fingerbass`, `upright` | `slap_bass`, `bass_root5`, `bass_walk` |
+| clavinet (keys) | `clav`, `rhodes`, `organ` | `stab`, `block`, `arp` |
+| scratch (guitar) | `muted_gtr`, `steel`, `nylon`, `clean_elec` | `funk_guitar`, `fingerpick`, `strum`, `arp` |
+
+You may write **more than one part** (for example keys and a pad), but keep it to
+two at most. More than two and you are arranging, which is the bandleader's job.
+
+## Part fields you may set
+
+```json
+{
+  "inst": "muted_gtr",
+  "role": "funk_guitar",
+  "start_bar": 0,
+  "end_bar": null,
+  "gain": 0.95,
+  "octave": 0,
+  "pattern": "folk",
+  "swing": 0.0,
+  "jitter": 3,
+  "register": [52, 76],
+  "voices": 4,
+  "rootless": false,
+  "howl": 0.0,
+  "extra": {}
+}
+```
+
+Anything not listed here is rejected by the validator. Use `extra` for
+role-specific options:
+
+- `drums`: `{"pattern": "funk"}` — patterns: `folk_soft`, `folk_full`, `pulse`,
+  `heartbeat`, `boom_bap`, `funk`
+- `stab`: `{"steps": [2, 6, 10, 14], "len16": 1.2, "vel": 86}` — `steps` are
+  positions in a 16-step bar
+- `funk_guitar`: `{"grid": [1,3,5,7,9,11,13,15], "accents": [3, 11]}`
+- `bass_root5`: `{"quarters": true}` to play eighths instead of halves
+- `sparkle`: `{"slots": [3, 7, 11, 14]}`
+- any part: `{"mix": {"level": -3.0, "pan": 0.2, "pres": 2.0, "send": 1.2}}` to
+  override its mix profile
+
+## Rhythm
+
+A bar has 16 sixteenth-steps, numbered 0-15.
+
+```
+step:   0 1 2 3   4 5 6 7   8 9 10 11   12 13 14 15
+beat:   1 . . .   2 . . .   3 . .  .    4  .  .  .
+name:   down     e & a     e & a  e     & a  e  &  a
+```
+
+Step 0 is the one. Steps 4, 8, 12 are beats 2, 3, 4. Steps 2, 6, 10, 14 are the
+"and" of each beat.
+
+## What you write
+
+One JSON file, nothing else:
+
+```json
+{
+  "player": "sticks",
+  "parts": [
+    {"inst": "drums", "role": "drums", "extra": {"pattern": "funk"}}
+  ],
+  "comment": "Two sentences: what you played and why."
+}
+```
+
+`parts` is a list even when it holds one part.
+
+## Rules
+
+- Write the file. Do not describe the file.
+- Use only the pairs in your row of the table above.
+- `comment` is for the other players, not for the user. Be direct.
+- You cannot hear the track. Never claim you did.
