@@ -228,7 +228,7 @@ re-running gives you a different take of the same performance.
 cd pieces/hermes-rap && python3 build.py && python3 vocals.py && python3 mix.py
 ```
 
-`hermes-rap.mp3` is the master. The video is in `pieces/hermes-rap/film/`.
+`hermes-rap.mp3` is the master. The film — 89 s, 1080p, lyrics on screen, five burns — is built from `pieces/hermes-rap/film/` (see its README).
 The technique — how you get a TTS engine to sit on a grid and read as rap, the
 mix chain that keeps it legible, and the traps — is written up in
 [skill/references/rap-vocals.md](skill/references/rap-vocals.md).

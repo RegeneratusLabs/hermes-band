@@ -85,8 +85,10 @@ def synth_fit(text, target_s, tag):
     return a, dur, scale
 
 
-def build(lines, hook_bars, out_path):
+def build(lines, hook_bars, out_path, dump=None):
+    import json
     total = int((BARS * BAR + 3.0) * SR)
+    rec = {}
     bus = np.zeros(total, np.float32)
     for bar, text in sorted(lines.items()):
         is_hook = bar in hook_bars
@@ -94,10 +96,14 @@ def build(lines, hook_bars, out_path):
         a, dur, scale = synth_fit(text, target, f"bar{bar:02d}")
         start = int((bar * BAR + 0.02) * SR)
         bus[start:start + len(a)] += a
+        rec[bar] = round(dur, 4)
         print(f"bar {bar:02d} dur={dur:.2f}s scale={scale:.2f} start={bar*BAR:.2f} "
               f"{'HOOK' if is_hook else '    '} | {text}")
     add_adlibs(bus)
     write_wav(out_path, bus)
+    if dump:
+        json.dump(rec, open(dump, "w"), indent=0)
+        print("line durations ->", dump)
     print("vocal bus", out_path, round(len(bus) / SR, 2), "s")
 
 
@@ -121,4 +127,5 @@ def add_adlibs(bus):
 
 if __name__ == "__main__":
     from build import LINES, HOOK_BARS
-    build(LINES, HOOK_BARS, os.path.join(OUT, "vocal_raw.wav"))
+    build(LINES, HOOK_BARS, os.path.join(OUT, "vocal_raw.wav"),
+          dump=os.path.join(OUT, "lines.json"))
