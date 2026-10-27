@@ -31,3 +31,5 @@ venv/
 # band session scratch — rendered audio and full prompts are not source
 session/runs/**/*.wav
 session/runs/**/*.mp3
+# the band's marks ship with the session (see session/avatars/README.md)
+!session/avatars/*.png

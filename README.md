@@ -205,6 +205,13 @@ what makes the result interesting rather than merely automatic. `session/runs/`
 holds a complete session: every prompt, every reply, the parts they wrote, the
 final score and a report.
 
+**[docs/SESSION.md](docs/SESSION.md) is the process in full** — the five personas,
+the contract they work against, what each of the four rounds actually sends them,
+how the bandleader mixes a record it can't hear, and what lands on disk. The
+result of the first session is in
+[session/runs/session-01/REPORT.md](session/runs/session-01/REPORT.md); the
+band's faces are in [session/avatars](session/avatars).
+
 ## Using it with Hermes
 
 This is built to be operated by a [Hermes](https://hermes-agent.nousresearch.com)
