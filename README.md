@@ -181,7 +181,8 @@ if `fluidsynth` or the soundfont isn't installed.
 - **Sampled GM instruments, not a real performer.** The ceiling is the soundfont.
   Good for beds, stings, sketches and library music. It is not a substitute for a
   recorded player on a lead line.
-- **No vocals.** It doesn't sing.
+- **No vocals in the engine.** It doesn't sing. It can still *rap*: a local TTS
+  voice placed one line per bar reads as rap, and `pieces/hermes-rap/` proves it.
 - **No audio-to-MIDI.** It writes music; it doesn't transcribe it.
 - **Not a generative model.** It doesn't invent a style from a text prompt. You
   tell it what to play, in more detail than you'd tell a human, and it plays it
@@ -211,6 +212,26 @@ how the bandleader mixes a record it can't hear, and what lands on disk. The
 result of the first session is in
 [session/runs/session-01/REPORT.md](session/runs/session-01/REPORT.md); the
 band's faces are in [session/avatars](session/avatars).
+
+## Pieces
+
+Finished work, with its source, so you can hear what the engine does before you
+read the code.
+
+**[`pieces/hermes-rap/`](pieces/hermes-rap) — "No Hype", 89 seconds of boom bap.**
+The band's first vocal record. A local TTS voice raps one line per bar, locked to
+the grid and rate-fitted so each line fills its bar, over an A-minor
+Am7–Dm7–Fmaj7–E7 loop at 92 BPM. The beat is deterministic; the voice isn't, so
+re-running gives you a different take of the same performance.
+
+```bash
+cd pieces/hermes-rap && python3 build.py && python3 vocals.py && python3 mix.py
+```
+
+`hermes-rap.mp3` is the master. The video is in `pieces/hermes-rap/film/`.
+The technique — how you get a TTS engine to sit on a grid and read as rap, the
+mix chain that keeps it legible, and the traps — is written up in
+[skill/references/rap-vocals.md](skill/references/rap-vocals.md).
 
 ## Using it with Hermes
 

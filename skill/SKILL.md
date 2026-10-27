@@ -144,7 +144,9 @@ check for peaks at `theory.midi_to_freq(pitch)`.
 - **Sampled GM instruments, not a real performer.** The ceiling is the soundfont.
   Good for beds, stings, sketches and library music; not a substitute for a
   recorded player on a lead line.
-- **No vocals.**
+- **No vocals in the engine itself** — but a local TTS rapped one line per bar,
+  trimmed to the downbeat and rate-fitted, reads as rap. See
+  `references/rap-vocals.md` for the full recipe, mix chain and verification.
 - **No audio-to-MIDI** — it writes music, it doesn't transcribe it.
 - **Not a generative model.** You tell it what to play, in more detail than you'd
   tell a human, and it plays it properly.

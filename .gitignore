@@ -33,3 +33,6 @@ session/runs/**/*.wav
 session/runs/**/*.mp3
 # the band's marks ship with the session (see session/avatars/README.md)
 !session/avatars/*.png
+
+# the single ships with its source
+!pieces/hermes-rap/hermes-rap.mp3
