@@ -1,0 +1,36 @@
+manifest_version: 2
+name: hermes-band
+label: Hermes Band
+kind: standalone
+version: "0.2.0"
+author: Regeneratus Labs
+homepage: https://github.com/RegeneratusLabs/hermes-band
+license: MIT
+description: >
+  Compose and render original music on the local machine — no music API, no
+  model download, no per-track cost. Arrangements are data (a score JSON:
+  tempo, key, progression, parts), rendered deterministically through
+  fluidsynth plus a mastering chain to wav and mp3. Adds the band_render,
+  band_validate_score, band_list_presets and band_doctor tools and a bundled
+  hermes-band skill.
+requires_hermes: ">=0.21.5"
+platforms: [linux, macos]
+tags: [music, audio, composition, midi, fluidsynth, video]
+python_dependencies:
+  - "numpy>=1.24,<3"
+provides_tools:
+  - band_render
+  - band_validate_score
+  - band_list_presets
+  - band_doctor
+provides_hooks: []
+provides_middleware: []
+requires_env: []
+config_schema:
+  output_dir:
+    type: str
+    default: ""
+    description: >
+      Directory rendered tracks are written to. Empty means
+      ~/hermes-band-out. Each render gets its own subdirectory named after the
+      track (wav, mp3 and per-part midi/wav stems).

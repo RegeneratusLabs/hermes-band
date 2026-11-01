@@ -57,6 +57,17 @@ the soundfont. If your `.sf2` lives somewhere else, set `HERMES_BAND_SF2`.
 
 It's not on PyPI yet — clone and install.
 
+## Install as a Hermes plugin
+
+```bash
+hermes plugins install RegeneratusLabs/hermes-band
+hermes plugins enable hermes-band
+```
+
+You get four tools — `band_render`, `band_validate_score`, `band_list_presets`, `band_doctor` — plus the `hermes-band` skill. Ask the agent for a track and it composes, renders and hands you the file. Run `band_doctor` first: it reports anything missing on the host before you waste a render.
+
+**What it touches.** Renders with the local `fluidsynth` and `ffmpeg` binaries and the GM soundfont listed above — nothing is downloaded. Writes the wav, the mp3 and the per-part midi/wav stems into `~/hermes-band-out/<name>/` by default; override with the plugin's `output_dir` setting. No network calls, no credentials.
+
 ## Use it
 
 ```bash
