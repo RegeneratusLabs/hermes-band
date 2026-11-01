@@ -68,10 +68,10 @@ hermes plugins install RegeneratusLabs/hermes-band
 hermes plugins enable hermes-band
 ```
 
-The installer scans every plugin before it lands, and this one runs host binaries
-(`fluidsynth`, `ffmpeg`), so expect a caution verdict and a prompt to confirm —
-`--force` accepts it. Installing from the Hermes plugin catalog skips that, because
-the tree is reviewed at a pinned commit.
+The installer scans every plugin before it lands. This one runs clean: the engine
+that shells out to `fluidsynth` and `ffmpeg` is disclosed, and the dev material in
+this repo (the session harness, the rap piece, CI config) is listed in
+`.skillignore` so it stays out of the scan.
 
 You get four tools — `band_render`, `band_validate_score`, `band_list_presets`, `band_doctor` — plus the `hermes-band` skill. Ask the agent for a track and it composes, renders and hands you the file. Run `band_doctor` first: it reports anything missing on the host before you waste a render.
 
