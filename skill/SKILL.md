@@ -38,14 +38,16 @@ production. That's a generative model or a human.
 ## Install
 
 ```bash
-sudo apt install fluidsynth fluid-soundfont-gm ffmpeg
-git clone https://github.com/RegeneratusLabs/hermes-band
-cd hermes-band && pip install -e .
-hermes-band doctor
+hermes plugins install RegeneratusLabs/hermes-band
+hermes plugins enable hermes-band
 ```
 
-`doctor` must say "ready to render" before anything else. If the soundfont lives
-elsewhere, set `HERMES_BAND_SF2`.
+Then run `band_doctor` before anything else — it must report `ready: true`. It
+checks numpy, the `fluidsynth` binary, a General MIDI soundfont and `ffmpeg`.
+If any of those is missing, tell the user which one and that the host packages
+need installing through the system package manager (it needs root; the plugin
+never installs system packages itself). If the soundfont lives somewhere else,
+set `HERMES_BAND_SF2`.
 
 ## Minimal correct usage
 

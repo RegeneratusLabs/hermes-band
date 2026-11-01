@@ -58,10 +58,10 @@ class Track:
         ev = list(self.events)
         if first:
             us = int(60_000_000 / bpm)
-            ev.append((0, -20, b"\xff\x51\x03" + us.to_bytes(3, "big")))
+            ev.append((0, -20, bytes([0xFF, 0x51, 0x03]) + us.to_bytes(3, "big")))
             if self.name:
                 nb = self.name.encode()[:127]
-                ev.append((0, -19, b"\xff\x03" + _vlq(len(nb)) + nb))
+                ev.append((0, -19, bytes([0xFF, 0x03]) + _vlq(len(nb)) + nb))
         ev.append((0, -18, bytes([0xC0 | self.channel, self.program])))
         ev.append((0, -17, bytes([0xB0 | self.channel, 7, self.volume])))
         ev.append((0, -16, bytes([0xB0 | self.channel, 10, self.pan])))
@@ -73,7 +73,7 @@ class Track:
         for tick, _, payload in ev:
             data += _vlq(tick - prev) + payload
             prev = tick
-        data += _vlq(0) + b"\xff\x2f\x00"
+        data += _vlq(0) + bytes([0xFF, 0x2F, 0x00])   # end of track
         return b"MTrk" + len(data).to_bytes(4, "big") + bytes(data)
 
     def last_tick(self) -> int:

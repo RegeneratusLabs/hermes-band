@@ -37,13 +37,17 @@ costs nothing.
 
 ## Install
 
-You need `fluidsynth` and a General MIDI soundfont. On Debian/Ubuntu:
+You need `fluidsynth`, a General MIDI soundfont and `ffmpeg`. On Debian/Ubuntu,
+as root:
 
 ```bash
-sudo apt install fluidsynth fluid-soundfont-gm ffmpeg
+apt install fluidsynth fluid-soundfont-gm ffmpeg
 ```
 
-Then:
+The fastest way in is as a Hermes plugin — see
+[Install as a Hermes plugin](#install-as-a-hermes-plugin) below.
+
+To use it as a plain Python library instead:
 
 ```bash
 git clone https://github.com/RegeneratusLabs/hermes-band
@@ -63,6 +67,11 @@ It's not on PyPI yet — clone and install.
 hermes plugins install RegeneratusLabs/hermes-band
 hermes plugins enable hermes-band
 ```
+
+The installer scans every plugin before it lands, and this one runs host binaries
+(`fluidsynth`, `ffmpeg`), so expect a caution verdict and a prompt to confirm —
+`--force` accepts it. Installing from the Hermes plugin catalog skips that, because
+the tree is reviewed at a pinned commit.
 
 You get four tools — `band_render`, `band_validate_score`, `band_list_presets`, `band_doctor` — plus the `hermes-band` skill. Ask the agent for a track and it composes, renders and hands you the file. Run `band_doctor` first: it reports anything missing on the host before you waste a render.
 

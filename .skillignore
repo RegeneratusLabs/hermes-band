@@ -1,0 +1,16 @@
+# What the plugin loads at runtime is the engine (`band/`), this `__init__.py`,
+# `plugin.yaml` and `skill/`. Everything below is development material kept in
+# the repo for the humans and the CI, not shipped to Hermes — excluded from the
+# plugin security scan so its findings stay about the code that actually runs.
+#
+# The multi-agent band session harness: bots, personas, avatars, run transcripts
+session/
+# the "No Hype" rap piece and its film build
+pieces/
+video/
+# session write-up for devs
+docs/
+# CI config, not loaded by Hermes
+.github/
+# local render output
+out/

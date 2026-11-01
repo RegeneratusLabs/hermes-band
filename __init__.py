@@ -12,7 +12,6 @@ import json
 import os
 import re
 import shutil
-import subprocess
 from pathlib import Path
 
 PLUGIN_DIR = Path(__file__).parent
@@ -43,14 +42,8 @@ def _out_root(ctx) -> Path:
     return base
 
 
-def _fluidsynth_version() -> str:
-    binary = os.environ.get("HERMES_BAND_FLUIDSYNTH", DEFAULT_FLUIDSYNTH)
-    path = shutil.which(binary)
-    if not path:
-        return ""
-    done = subprocess.run([path, "--version"], capture_output=True, text=True, check=False)
-    text = (done.stdout or done.stderr or "").strip().splitlines()
-    return text[0].strip() if text else "present"
+def _fluidsynth_path() -> str:
+    return shutil.which(os.environ.get("HERMES_BAND_FLUIDSYNTH", DEFAULT_FLUIDSYNTH)) or ""
 
 
 def _soundfont_path() -> str:
@@ -66,7 +59,7 @@ def _doctor(ctx) -> dict:
     except ImportError:
         checks["numpy"] = ""
 
-    checks["fluidsynth"] = _fluidsynth_version()
+    checks["fluidsynth"] = _fluidsynth_path()
 
     sf2 = _soundfont_path()
     checks["soundfont"] = sf2 if os.path.exists(sf2) else ""
