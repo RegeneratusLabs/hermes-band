@@ -6,13 +6,7 @@ version: "0.2.0"
 author: Regeneratus Labs
 homepage: https://github.com/RegeneratusLabs/hermes-band
 license: MIT
-description: >
-  Compose and render original music on the local machine — no music API, no
-  model download, no per-track cost. Arrangements are data (a score JSON:
-  tempo, key, progression, parts), rendered deterministically through
-  fluidsynth plus a mastering chain to wav and mp3. Adds the band_render,
-  band_validate_score, band_list_presets and band_doctor tools and a bundled
-  hermes-band skill.
+description: "Compose and render original music on your own machine — score JSON in, wav and mp3 out."
 requires_hermes: ">=0.21.5"
 platforms: [linux, macos]
 tags: [music, audio, composition, midi, fluidsynth, video]
